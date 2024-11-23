@@ -20,10 +20,10 @@ public class TicTacToeGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Инициализация доски
+        // Инициализация доски пустыми символами
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board[i][j] = ' ';  // Заполняем пустыми символами
+                board[i][j] = ' ';  
             }
         }
 
@@ -39,7 +39,7 @@ public class TicTacToeGUI extends Application {
                 Button btn = new Button(" ");
                 btn.setMinSize(100, 100);
                 btn.setStyle("-fx-font-size: 24; -fx-font-weight: bold;");
-                final int row = i;  // Локальные переменные для обработки кликов
+                final int row = i;  
                 final int col = j;
                 btn.setOnAction(event -> handleButtonClick(row, col));  // Обработка кликов
                 buttons[i][j] = btn;
@@ -47,21 +47,21 @@ public class TicTacToeGUI extends Application {
             }
         }
 
-        // Настройка сцены и окна
+        // Настройка поле и окна
         Scene scene = new Scene(grid, 400, 400);
         primaryStage.setTitle("Tic Tac Toe");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    // Обработка клика на кнопке (ход игрока)
+    // Обработка клика по кнопке (ход игрока)
     private void handleButtonClick(int row, int col) {
-        // Игнорировать, если ячейка уже занята
+        // Игнорировать, если клетка уже занята
         if (board[row][col] != ' ') {
             return;
         }
 
-        // Помещаем символ в соответствующую ячейку
+        // Помещаем символ в клетку
         if (player1Turn) {
             board[row][col] = 'X';
             buttons[row][col].setText("X");
@@ -83,7 +83,7 @@ public class TicTacToeGUI extends Application {
             return;
         }
 
-        // Переключение хода
+        // Передача хода
         player1Turn = !player1Turn;
     }
 
@@ -141,6 +141,6 @@ public class TicTacToeGUI extends Application {
                 buttons[i][j].setText(" ");
             }
         }
-        player1Turn = true;  // Снова начинает игрок 1
+        player1Turn = true;  // Передача хода 
     }
 }
